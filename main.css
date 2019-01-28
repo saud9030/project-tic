@@ -1,9 +1,47 @@
 .col{
-    border: 1px solid black;
+    border-radius: 9%;
     height: 75px;
+    background: turquoise;
+    margin : 5px;
 }
 
-/* p{
-    font-size: 23px;
-    color: orange;
-} */
+h1{
+    text-align: center;
+    font-weight: 2000;
+    font-family: 'Times New Roman', Times, serif;
+}
+div{
+    font-size: 44px;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+
+}
+.container{
+    width: 600px;
+}
+
+#users{
+    width: 500px;
+    margin: auto;
+}
+#user1{
+    /* background: teal; */
+    border: 3px double black;
+    width: 220px;
+    border-radius: 9%;
+    padding: 5px;
+    font-size: 20px;
+    margin: auto;
+}
+#user2{
+    /* background: teal; */
+    border: 3px double black;
+    width: 220px;
+    border-radius: 9%;
+    padding: 5px;
+    font-size: 20px;
+    margin: auto;
+}
+
+

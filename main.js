@@ -28,12 +28,10 @@ function userChange(){
 
     if (user === "user1"){
         user = "user2";
-        user2 += 1;
         $(turn).text("X")
     }
     else{
         user = "user1";
-        user1 +=1;
         $(turn).text("O")
     }
 
@@ -79,12 +77,22 @@ function checkWinner(){
         ||
         (boxIndex[2].textContent === win && boxIndex[4].textContent === win && boxIndex[6].textContent === win) 
             ){
-        alert(` ${user} just won`)
-        location.reload(true);
+                tie = 0;
+            if (win === "X"){
+                    user2++;
+                    $("#user2").text(`user2 score is ${user2}`);
+            }else if (win === "O"){
+                    user1++;
+                    $("#user1").text(`user1 score is${user1}`);
+                    }
+            alert(` ${user} just won`)
+            user = "user2";
+            $(".col").empty();
             }else if (tie === 9){
+                user ="user2";
                 alert(`it's a tie`)
-                location.reload(true);
-
+                // location.reload(true);
+                $(".col").empty();
             }
     
 }
