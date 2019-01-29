@@ -8,6 +8,8 @@
 
 
 // -----------------------
+var countChance = 0;
+
 var user = "user2"
 var user1 = 0;
 var user2 = 0;
@@ -98,17 +100,25 @@ function checkWinner(){
     
 }
 
-function computerTurn(){
+function computerTurn(event){
     
     round++;
     // console.log(round)
     if (round === 1){
-        if (computerBox[4].textContent === ''){
-            $(computerBox[4]).text("X");
+        function takeCorner(){
+            if (computerBox[4].textContent === ''){
+                $(computerBox[4]).text("X");
+            }
+            else{
+                for (var r = 0; r <=8; r+=2){
+                    if(computerBox[r].textContent === ''){
+                        return $(computerBox[r]).text("X");
+                    }
+                }
+                
+            }
         }
-        else{
-            $(computerBox[0]).text("X");
-        }
+        takeCorner();
     }
     if (round === 2){
         if (computerBox[4].textContent === "X"){
@@ -121,32 +131,54 @@ function computerTurn(){
                             if (n <= 6 && i < 5){
                                 switch(n){
                                     case (i + 2):
+                                        if(n === 5){
+                                            $(computerBox[1]).text("X")
+                                        }
+                                        else{
                                         pos = i + 1;
                                         $(computerBox[pos]).text("X");
+                                        }
                                         break;
                                     case (i + 1):
+                                        if ( i === 1){
+                                            pos = i - 1;
+                                        $(computerBox[pos]).text("X")
+                                        }else{
                                         pos = n + 1;
                                         $(computerBox[pos]).text("X")
+                                        }
                                         break;
                                     case ( i + 3):
                                         if(n === 5){
                                             pos = n + 3;
                                             $(computerBox[pos]).text("X");
-                                        }else{
-                                        pos = n - 6;
+                                        }
+                                        else if(n === 6){
+                                            pos = n - 6;
+                                            $(computerBox[pos]).text("X")
+                                        }
+                                        else{
+                                        pos = n + 3;
                                         $(computerBox[pos]).text("X")
                                         }
                                         break;
+                                    case(i + 4):
+                                        if (i === 1 && n === 5){
+                                            $(computerBox[2]).text("X")
+                                        }else{
+                                        $(computerBox[3]).text("X")
+                                        }
+                                        break;
                                     case (i + 6):
+                                        console.log("hi")
                                         pos = i + 3;
-                                        console.log(pos)
                                         $(computerBox[pos]).text("X")
                                         break;
+                                    
                                 }
                             }else{
                                 switch(n){
                                     case (i + 2):
-                                        console.log('here')
                                         pos = n - 1;
                                         $(computerBox[pos]).text("X");
                                         break;
@@ -160,16 +192,25 @@ function computerTurn(){
                                         }
                                         break;
                                     case (i + 3):
-                                        console.log('hi')
                                         pos = n - 6;
                                         $(computerBox[pos]).text("X")
                                         break;
-                                    // case (i + 6):
-                                    //     console.log('here')
-                                    //     pos = i + 3;
-                                    //     console.log(pos)
-                                    //     $(computerBox[pos]).text("X")
-                                    //     break;
+                                    case (i + 6):
+                                        if (n === 7){
+                                            $(computerBox[3]).text("X")
+                                        }else{
+                                        pos = i + 3;
+                                        $(computerBox[pos]).text("X")
+                                        }
+                                        break;
+                                    case(i+8):
+                                        if ( i === 0){
+                                            $(computerBox[2]).text("X")
+                                        }
+                                        else{
+                                        $(computerBox[3]).text("X")
+                                        }
+                                        break;
                                 }
                             }
                             // if (n === i + 2){
@@ -184,11 +225,51 @@ function computerTurn(){
 
                     }
                 }
-                // var num2 = i + 2
-                // if (computerBox[i].textContent === "O" && computerBox[num2].textContent === "O"){
-                //     var dif = i + 1;
-                //     $(computerBox[dif]).text("X");
                 }                
+        }else{
+            for (var i =0 ; i < computerBox.length; i++){
+                if(computerBox[i].textContent === "O"){
+                    for (var n = 0; n <=8 ; n++){ 
+                        if (n === i) { continue; }
+                        if (computerBox[n].textContent === "O"){
+                            if (n%2 === 0 && i%2 ===0 ){
+                                switch(n+i){
+                                    case (6):
+                                        $(computerBox[6]).text("X")
+                                        break;
+                                    case (10):
+                                        $(computerBox[2]).text("X")
+                                        break;
+                                    case(12):
+                                        $(computerBox[6]).text("X")
+                                        break;
+                    }
+                }       
+                            else if (n%2 !==0 || i%2 !== 0){
+                                switch(n+i){
+                                    case(5):
+                                        $(computerBox[7]).text("X")
+                                        break;
+                                    case(7):
+                                        $(computerBox[5]).text("X")
+                                        break;
+                                    case(11):
+                                        $(computerBox[1]).text("X")
+                                        break;
+                                    case(9):
+                                        $(computerBox[3]).text("X")
+                                        break;
+                                }
+                            }
+                            else{
+                                
+                                takeCorner();
+                            }
+            }
+            }
+        }
+        }
+
             }
             // for(var i = 1; i <= 7; i+=2){
             //     if(computerBox[i].textContent !== ""){
@@ -208,7 +289,38 @@ function computerTurn(){
         // }
     }
     if (round === 3){
-
+        var winningCases = [ 
+            [0,1,2],
+            [3,4,5],
+            [6,7,8],
+            [0,3,6],
+            [0,4,8],
+            [1,4,7],
+            [2,5,8],
+            [2,4,6]
+    ];
+    for (var i = 0; i < winningCases.length; i++){
+        var currentArray = winningCases[i];
+        countChance = 0;
+        
+        for (var a = 0; a < currentArray.length; a++){
+            winIndex = currentArray[a];
+            // console.log(winIndex)
+           if(computerBox[winIndex].textContent === "O"){
+               countChance ++;
+               if (countChance === 2){
+                    for (s in currentArray){
+                        var block = currentArray[s];
+                        if (computerBox[block].textContent === ""){
+                            debugger
+                            return $(computerBox[block]).text("X")
+                    }
+                }
+            }
+           }
+           
+        }
+    }
     }
 }
 
