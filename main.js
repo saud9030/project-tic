@@ -82,7 +82,7 @@ function checkWinner(){
         ||
         (boxIndex[2].textContent === win && boxIndex[4].textContent === win && boxIndex[6].textContent === win) 
             ){
-                tie = 0;
+                
             if (win === "X"){
                     user2++;
                     $("#user2").text(`user2 score is ${user2}`);
@@ -90,6 +90,7 @@ function checkWinner(){
                     user1++;
                     $("#user1").text(`user1 score is ${user1}`);
                     }
+            tie = 0;
             gameOver++;
             alert(` ${user} just won`)
             user = "user2";
