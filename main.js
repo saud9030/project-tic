@@ -45,7 +45,8 @@ function userChange(){
 function boxTaken() {
     var turn = event.target;
     if (turn.textContent === "X" || turn.textContent === "O"){
-        alert("error")
+        tie =0;
+         alert("error");
     }
     else{
         $(turn).text("X")
