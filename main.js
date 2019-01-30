@@ -12,14 +12,19 @@ var user = "user2"
 var user1 = 0;
 var user2 = 0;
 var tie=0;
+var gameOver = 0;
 
 function testing(event){
+    if (gameOver === 0){
+        var turn = event.target;
+   
+        boxTaken(event);
     
-    var turn = event.target;
-   
-    boxTaken(event);
-   
-    checkWinner(event);
+        checkWinner(event);
+    }else{
+        alert("game is over, restart the game please")
+    }
+    
 
 }
 // to change between users at every click and to insert input
@@ -83,21 +88,27 @@ function checkWinner(){
                     $("#user2").text(`user2 score is ${user2}`);
             }else if (win === "O"){
                     user1++;
-                    $("#user1").text(`user1 score is${user1}`);
+                    $("#user1").text(`user1 score is ${user1}`);
                     }
+            gameOver++;
             alert(` ${user} just won`)
             user = "user2";
-            $(".col").empty();
             }else if (tie === 9){
                 tie = 0;
+                gameOver++;
                 user ="user2";
                 alert(`it's a tie`)
                 // location.reload(true);
-                $(".col").empty();
+                // $(".col").empty();
             }
     
 }
-
+function empty(){
+    $(".col").empty();
+    tie = 0;
+    gameOver = 0;
+}
 
 $(".col").on("click",testing)
 
+$("#restart").on("click", empty)
