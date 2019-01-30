@@ -54,17 +54,22 @@ function startRound(){
             return $(computerBox[4]).text("X");
         }
         else{
-            for (var r = 0; r <=8; r+=2){
-                if(computerBox[r].textContent === ''){
-                    return $(computerBox[r]).text("X");
+                if(computerBox[0].textContent === ''){
+                    return $(computerBox[0]).text("X");
+                }else if(computerBox[2].textContent === ''){
+                    return $(computerBox[2]).text("X");
+                }else if(computerBox[6].textContent === ''){
+                    return $(computerBox[6]).text("X");
+                }else if(computerBox[8].textContent === ''){
+                    return $(computerBox[8]).text("X");
                 }
-            }
+            
             
         }
     }
 }
 // this function to win against the user
-function toWin(){
+function toWin(letter){
     // to loop through all the winning cases to test any possiblities to win.
     for (loop in winningCases){
         // to count how many indecise a user have in a winning case
@@ -74,7 +79,7 @@ function toWin(){
         // to test the wining case that was selected
         for (var allWining = 0; allWining < 3; allWining++){
             // to see if the user has two indecise for the winning case
-            if (computerBox[winningCases[loop][allWining]].textContent === "O"){
+            if (computerBox[winningCases[loop][allWining]].textContent === letter){
                 combination++;
             }
             // to know the last index for win
@@ -82,14 +87,19 @@ function toWin(){
                 // to store the number of the last winning index to use it aginst the user
                 lostToWin = allWining;
             }
-            if (combination === 2){
-                console.log(winningCases[loop]);
-                console.log(allWining);
-                console.log(winningCases[loop][allWining]);
-                // using the last winning index against the user
-                return $(computerBox[winningCases[loop][lostToWin]]).text("X");
-            }
+            if (combination === 2 ){
+                if (computerBox[winningCases[loop][lostToWin]].textContent === ""){
+                    // using the last winning index against the user
+                    return $(computerBox[winningCases[loop][lostToWin]]).text("X");
+                }else if(lostToWin < 0){
+                    console.log("now")
+                    return startRound();
+                }
+    
         }
+        }
+            
+        
     }
 }
 
@@ -99,10 +109,24 @@ function computerTurn(){
         return startRound();
     }
     if ( round === 2){
-        toWin();
-    }
+        if (toWin("O")){
+            console.log("so")
+            return toWin("O");
+        }else{
+            console.log("hi0000")
+            return toWin("X");
+        }
+        
+        }
     if (round === 3){
-        toWin();
+        if (toWin("O")){
+            console.log("hi")
+            return toWin("O");
+        }else{
+            console.log("hi")
+
+            return toWin("X");
+        }
     }
 }
 function computerPlay(event){

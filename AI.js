@@ -124,7 +124,8 @@ function checkWinner(win){
             // $(".col").empty();
              gameOver++;
             }else if (tie === 9){
-                alert(`it's a tie`)
+                tie =0;
+                console.log(`it's a tie`)
                 // location.reload(true);
                 // $(".col").empty();
             }

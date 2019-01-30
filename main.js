@@ -52,7 +52,7 @@ function boxTaken() {
 function checkWinner(){
     var turn = event.target;
     var boxIndex = $(".col").toArray();
-    tie += 1;
+    tie ++;
     var win;
     if (user === "user2"){
         win = "X";
@@ -89,6 +89,7 @@ function checkWinner(){
             user = "user2";
             $(".col").empty();
             }else if (tie === 9){
+                tie = 0;
                 user ="user2";
                 alert(`it's a tie`)
                 // location.reload(true);
