@@ -32,28 +32,28 @@ as this function will be called inside the main function everytime a click happe
 ```
 
 ## Difficult parts in the project
-1-finding bugs,
-2- trying to create an AI, which was my favourite part
+1-finding bugs, <br>
+2-trying to create an AI, which was my favourite part <br>
 
 ## Upcoming features
-1-finish the AI
-2-asking for users name
-3-be more creative with the styling
+1-finish the AI <br>
+2-asking for users name <br>
+3-be more creative with the styling <br>
 
 ## Tools
-[Bootstrap]()
-[jQuerey]()
-[sweetAlert]()
-[SkewedTypefaceByKurtEmch]()
+[Bootstrap]() <br>
+[jQuerey]() <br>
+[sweetAlert]() <br>
+[SkewedTypefaceByKurtEmch]() <br>
 
 ## Acknowledgements
 
-*Moath
-*Usman
-*Mike
-*Ayman
-*Ahemd
-*Abdullah
+*Moath <br>
+*Usman <br>
+*Mike  <br>
+*Ayman <br>
+*Ahemd <br>
+*Abdullah <br>
 
 
 
