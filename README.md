@@ -1,14 +1,14 @@
-## Tic Tac Toe
+# Tic Tac Toe
 
 ![screenShot](screenShot.png)
 
-##snippets of my code [HTML, CSS, JS]
+## snippets of my code [HTML, CSS, JS]
 
 ![HTML](HTML.png)
 ![CSS](CSS.png)
 ![JavaScript](JS.png)
 
-##logic
+## logic
 
 to know who won, I made a function that will go through all these conditions and returns the winner, otherwise it will be tie.
 as this function will be called inside the main function everytime a click happen
@@ -31,22 +31,22 @@ as this function will be called inside the main function everytime a click happe
        
 ```
 
-##Difficult parts in the project
+## Difficult parts in the project
 1-finding bugs,
 2- trying to create an AI, which was my favourite part
 
-##Upcoming features
+## Upcoming features
 1-finish the AI
 2-asking for users name
 3-be more creative with the styling
 
-##Tools
+## Tools
 [Bootstrap]()
 [jQuerey]()
 [sweetAlert]()
 [SkewedTypefaceByKurtEmch]()
 
-##Acknowledgements
+## Acknowledgements
 
 *Moath
 *Usman
