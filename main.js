@@ -9,8 +9,8 @@
 
 // -----------------------
 var user = "user2"
-var user1 = 0;
-var user2 = 0;
+let user1 = 0;
+let user2 = 0;
 var tie=0;
 var gameOver = 0;
 
@@ -22,7 +22,7 @@ function testing(event){
     
         checkWinner(event);
     }else{
-        alert("game is over, restart the game please")
+        swal("Game Over", "You need to restart the game", "warning");
     }
     
 
@@ -46,7 +46,7 @@ function boxTaken() {
     var turn = event.target;
     if (turn.textContent === "X" || turn.textContent === "O"){
         tie =0;
-         alert("error");
+        swal("error", "choose an empty box", "error");
     }
     else{
         $(turn).text("X")
@@ -87,30 +87,34 @@ function checkWinner(){
             if (win === "X"){
                     user2++;
                     $("#user2").text(`user2 score is ${user2}`);
+                    swal("user2 won", `user2 score is ${user2}`, "success");
             }else if (win === "O"){
                     user1++;
                     $("#user1").text(`user1 score is ${user1}`);
+                    swal("user1 won", `user1 score is ${user1}`, "success");
                     }
             tie = 0;
             gameOver++;
-            alert(` ${user} just won`)
             user = "user2";
             }else if (tie === 9){
                 tie = 0;
                 gameOver++;
                 user ="user2";
-                alert(`it's a tie`)
-                // location.reload(true);
-                // $(".col").empty();
+                swal("it is a tie", "you should restart the game", "info");
             }
     
 }
-function empty(){
-    $(".col").empty();
+function emptyMe(){
+    event.preventDefault();
     tie = 0;
     gameOver = 0;
+    $(".col").empty();
 }
-
+function resetMe(){
+    user1 = 0;
+    user2 = 0;
+}
 $(".col").on("click",testing)
 
-$("#restart").on("click", empty)
+$("#restart").on("click", emptyMe)
+$("#reset").on("click", resetMe)
